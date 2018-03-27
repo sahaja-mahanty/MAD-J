@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class ContentFragmentAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Insert", "Daily", "Analysis" };
+    private String tabTitles[] = new String[] { "INSERT", "DAILY", "ANALYSIS" };
 
     public ContentFragmentAdapter(FragmentManager fm) {
         super(fm);

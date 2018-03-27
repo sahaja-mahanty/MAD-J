@@ -3,6 +3,7 @@ package com.project.mad.fincheck;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class InsertFragment extends Fragment {
 
@@ -49,6 +53,30 @@ public class InsertFragment extends Fragment {
                     EditText numc=(EditText) view.findViewById(R.id.editText);
                     Integer n=Integer.valueOf(numc.getText().toString());
                     numc.setText("");
+//                    Toast.makeText(getContext(), s+" : "+ (n.toString()), Toast.LENGTH_SHORT).show();
+                    String food="0", health="0", edu="0", shop="0",travel="0", misc="0";
+                    if (s.equals("Food")){
+                        food = n.toString();
+                    }
+                    if (s.equals("Health")){
+                        health = n.toString();
+                    }
+                    if (s.equals("Education")){
+                        edu = n.toString();
+                    }
+                    if (s.equals("Shopping")){
+                        shop = n.toString();
+                    }
+                    if (s.equals("Travel")){
+                        travel = n.toString();
+                    }
+                    if (s.equals("Miscellaneous")){
+                        misc = n.toString();
+                    }
+                    String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+                    Log.d("track", timeStamp+ " " + food + " " + health + " "+edu + " "+shop+" "+travel+" "+misc);
+                    DatabaseHelper db = new DatabaseHelper(getContext());
+                    db.addVal(timeStamp, food, health, edu, shop, travel, misc);
                 }
             });
 
